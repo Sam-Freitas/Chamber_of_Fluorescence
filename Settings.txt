@@ -1,0 +1,9 @@
+Settings: "
+Experiment name: Experiment 1
+Number of images taken: 5
+Framerate: 5
+Exposure: 1/96
+Brightness: 72
+Contrast: 30
+Gain: 3.96
+
