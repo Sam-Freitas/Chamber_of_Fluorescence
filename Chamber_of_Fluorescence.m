@@ -13,6 +13,9 @@ disp('Calculating Session...');
 curr_path = pwd;
 
 mkdir(fullfile(curr_path, 'Data'));
+
+Set_table = readtable('Settings.txt','Delimiter',':');
+
 exp_path = fullfile(curr_path, 'Data');
 
 exp_dir = dir(exp_path);
