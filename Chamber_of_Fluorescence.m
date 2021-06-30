@@ -6,16 +6,16 @@ close all
 warning('off', 'MATLAB:MKDIR:DirectoryExists');
 
 %read in txt file with name of exp, directory, etc
-
 %find how many sessions are already completed 
 %in a folder labeled session + 1, take 5 images
 
 disp('Calculating Session...');
 curr_path = pwd;
-overarching_folder = uigetdir(curr_path);
-exp_path = overarching_folder;
 
-exp_dir = dir(overarching_folder);
+mkdir(fullfile(curr_path, 'Data'));
+exp_path = fullfile(curr_path, 'Data');
+
+exp_dir = dir(exp_path);
 dirFlags = [exp_dir.isdir];
 exp_dir = exp_dir(dirFlags);
 exp_dir(ismember( {exp_dir.name}, {'.', '..'})) = [];
