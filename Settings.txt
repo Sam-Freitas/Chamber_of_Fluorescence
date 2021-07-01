@@ -1,6 +1,6 @@
 Settings: Values
-Number of images taken: 5
 Experiment name: Experiment1
+Number of images taken: 5
 Framerate: 5
 Exposure: 0.05
 Brightness: 72

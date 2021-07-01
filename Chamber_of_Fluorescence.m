@@ -12,11 +12,12 @@ warning('off', 'MATLAB:MKDIR:DirectoryExists');
 disp('Calculating Session...');
 curr_path = pwd;
 
-mkdir(fullfile(curr_path, 'Data'));
+settings_txt = readtable('Settings.txt','Delimiter',':','format','auto');
 
-Set_table = readtable('Settings.txt','Delimiter',':');
+exp_name = char(settings_txt{1,2});
+mkdir(fullfile(curr_path, 'Data', exp_name));
 
-exp_path = fullfile(curr_path, 'Data');
+exp_path = fullfile(curr_path, 'Data', exp_name);
 
 exp_dir = dir(exp_path);
 dirFlags = [exp_dir.isdir];
@@ -24,14 +25,13 @@ exp_dir = exp_dir(dirFlags);
 exp_dir(ismember( {exp_dir.name}, {'.', '..'})) = [];
 
 session = length(exp_dir) + 1;        %adding a new session
-num_images = 5;     %number of images you want to take 
 
 %turn on labjack, wait 10 seconds
 LabJack_cycle(0,5);   %DAC0, 5 volts
 pause(10);
 
 %take images
-take_image_burst_new(num_images, session, exp_path);
+take_image_burst_new(session, exp_path, settings_txt);
 
 %turn off labjack
 LabJack_cycle(0,0);   %DAC0, 0 volts
